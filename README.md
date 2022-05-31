@@ -17,6 +17,7 @@ To try to do this, install this repo locally and install [https://github.com/blu
 cd adx
 yarn
 yarn build
+yarn server
 cd ..
 ```
 

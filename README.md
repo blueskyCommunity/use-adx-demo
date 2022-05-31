@@ -25,10 +25,12 @@ Step 3: Goto to 'node' folder and use
 cd node
 npm install
 npm start
+cd ..
 ```
 
 **Step 4:** Goto to 'frontend' folder and use
 ```
+cd frontend
 npm install
 npm run dev
 ```

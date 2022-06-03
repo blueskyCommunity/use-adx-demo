@@ -13,9 +13,16 @@ function expandPath(str) {
 
 const init = async (req, res) => {
   const { username, server } = req.body;
-  const REPO_PATH = expandPath(`~/.adx-${username}`);
-  res.cookie('REPO_PATH', REPO_PATH, { maxAge: 900000, httpOnly: true });
-  console.log(`cookie set for ${ REPO_PATH }`);
+  globalThis.REPO_PATH = expandPath(`~/.adx-${username}`);
+  console.log(globalThis.REPO_PATH);
+  try{
+    res.cookie('repo_path', globalThis.REPO_PATH, { path: '/', maxAge: 900000 });
+    console.log(`cookie set`);
+  }
+  catch(e){
+    console.log(e);
+  }
+  console.log(`my cookie ${ req.cookies.repo_path }`);
   const exists = await config.cfgExists(REPO_PATH);
 
   if (exists) {
@@ -41,7 +48,6 @@ const init = async (req, res) => {
       },
     });
   }
-  return REPO_PATH;
 };
 
 export default init;

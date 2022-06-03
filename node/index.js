@@ -8,10 +8,10 @@ import interaction from "./routes/social.js";
 
 const app = express();
 
+app.use(cookieParser());
+
 // cors middleware
 app.use(cors());
-
-app.use(cookieParser());
 
 // Inbuilt middleware to parse data
 app.use(express.json());

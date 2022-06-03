@@ -1,4 +1,4 @@
-import { REPO_PATH } from "../../../adx/cli/dist/lib/env.js";
+// import { REPO_PATH } from "../../../adx/cli/dist/lib/env.js";
 import { loadClient } from "../../../adx/cli/dist/lib/client.js";
 
 const createPost = async (req, res) => {
@@ -6,7 +6,7 @@ const createPost = async (req, res) => {
 
   try {
     if (text) {
-      const client = await loadClient(REPO_PATH);
+      const client = await loadClient(req.cookies.REPO_PATH);
       const post = await client.addPost(text);
       res.json({
         status: "success",
